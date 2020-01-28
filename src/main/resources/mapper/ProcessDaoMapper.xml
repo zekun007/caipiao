@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.caipiao.dao.ProcessDao">
+    <insert id="insertBatch" parameterType="java.util.List">
+        REPLACE INTO double_chromosphere(code,red1,red2,red3,red4,red5,red6,blue,winning_the_prize_date,winning_week)
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.winningCode},#{item.red1},#{item.red2},#{item.red3},#{item.red4},#{item.red5},#{item.red6},
+            #{item.blue},#{item.winningDate},#{item.winningWeek})
+        </foreach>
+    </insert>
+</mapper>
